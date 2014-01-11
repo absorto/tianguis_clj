@@ -6,8 +6,17 @@
 
 (defroutes app-routes
   (GET "/"
+       [vendimia-id]
+       (views/una-vendimia vendimia-id))
+  (GET "/vendimias/"
        []
-       (views/una-vendimia))
+       (views/vendimias))
+  (GET "/vendimias/crear/"
+       []
+       (views/vendimias-crear))
+  (POST "/vendimias/crear/"
+       {params :params}
+       (views/vendimias-crear-resultado params))
 
   (route/resources "/")
   (route/not-found "Not Found"))

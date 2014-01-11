@@ -14,13 +14,33 @@
    "[ "
    [:a {:href "/"} "Home"]
    " | "
-   [:a {:href "/add-location"} "Add a Location"]
+   [:a {:href "/vendimias/crear/"} "Armar vendimia"]
    " | "
-   [:a {:href "/all-locations"} "View All Locations"]
+   [:a {:href "/vendimias/log/"} "Historial de vendimias"]
+   " | "
+   [:a {:href "/pedidos/crear/"} "Armar pedidos"]
+   " | "
+   [:a {:href "/pedidos/log/"} "Historial de pedidos"]
    " ]"])
 
-(defn una-vendimia
+
+
+(defn vendimias-crear
   []
+  (hic-p/html5
+     (gen-page-head "Creando una Vendimia")
+     header-links
+     [:h1 "Armar vendimia"]))
+
+(defn vendimias-crear-resultado
+  [{:keys [x y]}]
+  (hic-p/html5
+   (gen-page-head "Added a Location")
+   header-links
+   [:h1 "Vendimia creada"]))
+
+(defn una-vendimia
+  [vendimia-id]
   (let [vendimia {:fecha-cierre  "2013-12-1"
                   :publicada nil
                   :fecha-entrega-inicial "2013-12-2 13:00"
@@ -49,8 +69,29 @@
                              :status "entregado"
                              :cliente "alguien@example.com"}]}]
     (hic-p/html5
-     (gen-page-head "Una vendimia")
+     (gen-page-head (str"Vendimia " vendimia-id))
      header-links
      [:h1 "Una vendimia"]
      [:p "fecha de cierre"  ((vendimia :ofertas) 0)])))
+
+
+
+(defn vendimias
+  []
+    (hic-p/html5
+     (gen-page-head "Vendimias")
+     header-links
+     [:h1 "Vendimias"]
+     [:table
+      [:thead
+       [:tr
+        [:th "aguas"]
+        [:th "con"]
+        [:th "canem"]]
+      [:tbody
+       [:tr
+        [:td "arf"]
+        [:td "arf arf arf"]
+        [:td "dge"]]]]
+]))
 
