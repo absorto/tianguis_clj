@@ -1,5 +1,6 @@
 (ns tianguis.views
   (:require [tianguis.db :as db]
+            [tianguis.docdb :as docdb]
             [clojure.string :as str]
             [hiccup.page :as hic-p]))
 
@@ -23,8 +24,6 @@
    [:a {:href "/pedidos/log/"} "Historial de pedidos"]
    " ]"])
 
-
-
 (defn vendimias-crear
   []
   (hic-p/html5
@@ -35,7 +34,7 @@
 (defn vendimias-crear-resultado
   [{:keys [x y]}]
   (hic-p/html5
-   (gen-page-head "Added a Location")
+   (gen-page-head "Vendimia creada")
    header-links
    [:h1 "Vendimia creada"]))
 
@@ -93,5 +92,9 @@
         [:td "arf"]
         [:td "arf arf arf"]
         [:td "dge"]]]]
-]))
+      ]))
 
+;; regresa a vista de la vendimia
+(defn vendimia-agrega-producto
+  [{:keys [vendimia_id producto_id precio]}]
+  )

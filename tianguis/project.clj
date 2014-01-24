@@ -5,6 +5,7 @@
                  [compojure "1.1.6"]
                  [korma "0.3.0-RC5"]
                  [org.xerial/sqlite-jdbc "3.7.2"]
+                 [com.novemberain/monger "1.5.0"]                 
                  [org.clojure/clojurescript "0.0-2069"]
                  [domina "1.0.3-SNAPSHOT"]]
   :plugins [[lein-ring "0.8.8"]]
