@@ -40,40 +40,13 @@
 
 (defn una-vendimia
   [vendimia-id]
-  (let [vendimia {:fecha-cierre  "2013-12-1"
-                  :publicada nil
-                  :fecha-entrega-inicial "2013-12-2 13:00"
-                  :fecha-entrega-final "2013-12-2 19:00"
-                  :ofertas [
-                            {:producto "tomate"
-                             :unidad "kg"
-                             :precio 23.2}
-                            {:producto "ghee"
-                             :precio 23
-                             :unidad "lt"}
-                            {:producto "acelga"
-                             :precio 11
-                             :unidad "ramo"}]
-                  :pedidos [
-                            { :producto "jitomate"
-                             :precio 22
-                             :unidad "kg"
-                             :cantidad 3
-                             :status "pedido"
-                             :cliente "absorto@sdf.org"}
-                            {:producto "arroz"
-                             :precio 40
-                             :unidad "kg"
-                             :cantidad 2
-                             :status "entregado"
-                             :cliente "alguien@example.com"}]}]
+  (let [vendimia (docdb/get-vendimia vendimia-id)]
     (hic-p/html5
      (gen-page-head (str"Vendimia " vendimia-id))
      header-links
      [:h1 "Una vendimia"]
-     [:p "fecha de cierre"  ((vendimia :ofertas) 0)])))
-
-
+     [:p "fecha de cierre"  (vendimia :fecha-cierre)]
+     [:p "oferta"  (vendimia :ofertas)])))
 
 (defn vendimias
   []
