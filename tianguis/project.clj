@@ -7,7 +7,8 @@
                  [org.xerial/sqlite-jdbc "3.7.2"]
                  [com.novemberain/monger "1.5.0"]                 
                  [org.clojure/clojurescript "0.0-2069"]
-                 [domina "1.0.3-SNAPSHOT"]]
+                 [domina "1.0.3-SNAPSHOT"]
+                 [formative "0.8.8"]]
   :plugins [[lein-ring "0.8.8"]]
   :ring {:handler tianguis.handler/app}
   :profiles
